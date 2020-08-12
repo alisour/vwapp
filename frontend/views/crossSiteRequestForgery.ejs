@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VWAPP</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/stylesheet.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="../assets/index.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Choose From The List!</h1>
+            <a href="/" class="btn" class="fa fa-home">HOME</a>
+
+        </div>
+
+        <br>
+
+        <div class="list">
+
+
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">VULNERABILITIES</button>
+                <div id="myDropdown" class="dropdown-content">
+
+                    <a href="/htmlInjectionReflectedGet" class="vulnerability">HTML Injection - Reflected (GET)</a>
+
+                    <a href="/htmlInjectionStoredBlog" class="vulnerability">HTML Injection - Stored (Blog)</a>
+
+                    <a href="/sqlInjectionSearch" class="vulnerability">Sql Injection - Search (GET)</a>
+
+                    <a href="/sqlInjectionStoredBlog" class="vulnerability">Sql Injection - Stored (Blog)</a>
+
+                    <a href="/brokenAuthenticationWeakPassword" class="vulnerability">Broken Authentication - Weak
+                        Password</a>
+
+                    <a href="/base64EncodingSecret" class="vulnerability">Base64 Encoding (Secret)</a>
+
+                    <a href="/sessionManagementAdministrativePortals?admin=0" class="vulnerability">Session Management -
+                        Administrative Portals</a>
+
+
+                    <a href="/crossSiteScriptingReflectedGet" class="vulnerability">Cross-Site Scripting - Reflected
+                        (GET)</a>
+
+                    <a href="/crossSiteScriptingStored" class="vulnerability">Cross-Site Scripting - Stored</a>
+
+
+                    <a href="/crossSiteRequestForgery" class="vulnerability">Cross-Site Request Forgery - Change
+                        Password</a>
+
+                    <a href="/unvalidatedDirectsForwards1" class="vulnerability">Unvalidated Directs & Forwards (1)</a>
+
+
+                    <a href="/directoryTraversalDirectories?document=documents" class="vulnerability">Directory
+                        Traversal -
+                        Directories</a>
+
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="header">
+            <h3>Cross Site Request Forgery - Change Password</h3>
+            <h6>hint: Testing range for CSRF attacks to mysql! (default:root/root)</h6>
+        </div>
+
+        <br>
+        <div id="crossSiteRequestForgery_div">
+            <form id="crossSiteRequestForgery_form" method="POST" action="/crossSiteRequestForgery">
+                <div class="form-group">
+                    <label for="firstname">New Password</label>
+                    <input name="firstname" type="password" class="form-control" id="firstname" placeholder="password"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname">Retype Password</label>
+                    <input name="lastname" type="password" class="form-control" id="lastname"
+                        placeholder="password-confirm" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">GO!</button>
+            </form>
+        </div>
+
+
+        <br>
+        <div class="">
+            <span id="crossSiteRequestForgery_result">
+                <%if (message == 'Invalid input!') { %> 
+
+                    <h2 style="color: rgb(182, 19, 19);"><%= message%></h2>
+
+                <%}%>
+                <%if (message == 'Password changed!'){%>
+                    <h2 style="color: rgb(21, 138, 21);"><%= message %></h2>
+                <%}%>
+            </span>
+        </div>
+        
+        <div class="solution">
+            <h4>The Solution:</h4>
+            <p>The error in this page is, not using extra control function for forms like these.
+                If an atacker has the cookies used for an user. The atacker can easily change
+                the password of that particular user. The solution for this problem is creating
+                an unique token for each session of the user. Making sure the sender of the password
+                changing request is coming from the real user.
+                 
+            </p>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

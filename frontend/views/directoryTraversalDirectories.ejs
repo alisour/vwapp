@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VWAPP</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/stylesheet.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Choose From The List!</h1>
+            <a href="/" class="btn" class="fa fa-home">HOME</a>
+
+        </div>
+
+        <br>
+
+        <div class="list">
+
+
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">VULNERABILITIES</button>
+                <div id="myDropdown" class="dropdown-content">
+
+                    <a href="/htmlInjectionReflectedGet" class="vulnerability">HTML Injection - Reflected (GET)</a>
+
+                    <a href="/htmlInjectionStoredBlog" class="vulnerability">HTML Injection - Stored (Blog)</a>
+
+                    <a href="/sqlInjectionSearch" class="vulnerability">Sql Injection - Search (GET)</a>
+
+                    <a href="/sqlInjectionStoredBlog" class="vulnerability">Sql Injection - Stored (Blog)</a>
+
+                    <a href="/brokenAuthenticationWeakPassword" class="vulnerability">Broken Authentication - Weak
+                        Password</a>
+
+                    <a href="/base64EncodingSecret" class="vulnerability">Base64 Encoding (Secret)</a>
+
+                    <a href="/sessionManagementAdministrativePortals?admin=0" class="vulnerability">Session Management -
+                        Administrative Portals</a>
+
+
+                    <a href="/crossSiteScriptingReflectedGet" class="vulnerability">Cross-Site Scripting - Reflected
+                        (GET)</a>
+
+                    <a href="/crossSiteScriptingStored" class="vulnerability">Cross-Site Scripting - Stored</a>
+
+
+                    <a href="/crossSiteRequestForgery" class="vulnerability">Cross-Site Request Forgery - Change
+                        Password</a>
+
+                    <a href="/unvalidatedDirectsForwards1" class="vulnerability">Unvalidated Directs & Forwards (1)</a>
+
+
+                    <a href="/directoryTraversalDirectories?document=documents" class="vulnerability">Directory
+                        Traversal - Directories</a>
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="header">
+            <h3>Directory Traversal - Directories</h3>
+            <h6>hint: Add '/..' to url parameter and see what happens!</h6>
+        </div>
+
+        <br>
+
+        <div>
+            <% for (index = 0; index < fileName.length; index++) { %>
+            <a style="color:turquoise;" href="<%-pathName + '/' +fileName[index]%> "><%-fileName[index]%></a>
+            <br>
+            <% } %>
+        </div>
+
+        <br>
+
+        <div class="solution">
+            <h4>The Solution:</h4>
+            <p>The error in this page is, having an input for the directory path.
+                Even if a simple text file is listed by a path reading function
+                and if that path reading function gets the target directory with
+                an input attached to http request, that means the request can be
+                forged again and no hidden file is safe. The solution for this
+                problem is, not accepting any input for a database query function.
+                Instead you should be the one that determines what to show to user.
+
+            </p>
+        </div>
+
+    </div>
+
+</body>
+<script src="../assets/index.js"></script>
+
+</html>
