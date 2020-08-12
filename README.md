@@ -20,7 +20,9 @@ I tried to imitate OWASP's bwapp. And this got out. Education purpouses only...
     ```
         npm install
     ```
-        then:
+    
+    Then this:
+    
     ```
         npm start
     ```
